@@ -99,7 +99,7 @@ export interface RecordProxy<T = { [key: string]: any }> {
     getOrCreateLinkedRecord(name: string, typeName: string, args?: Variables): RecordProxy
     getType(): string
     getValue<K extends keyof T>(name: K, args?: Variables): T[K]
-    setLinkedRecord<K extends keyof T>(record: RecordProxy<T[K]>, name: K, args?: Variables): RecordProxy
+    setLinkedRecord<K extends keyof T>(record: RecordProxy<T[K]> | null, name: K, args?: Variables): RecordProxy
     setLinkedRecords<H extends unknown = unknown, K extends keyof T = any>(
         records: Array<RecordProxy<T[K]> | null> | undefined | null,
         name: K,
@@ -395,7 +395,7 @@ export type MissingFieldHandler =
 
 export type RelayResponsePayload = {
     incrementalPlaceholders: Array<IncrementalDataPlaceholder> | undefined | null
-    fieldPayloads: Array<HandleFieldPayload> | undefined | null
+    fieldPayloads: Array<HandleFieldPayload> | null
     moduleImportPayloads: Array<ModuleImportPayload> | undefined | null
     source: MutableRecordSource
     errors: Array<PayloadError> | undefined | null

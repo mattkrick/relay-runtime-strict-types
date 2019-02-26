@@ -9,7 +9,7 @@ export class Network {
 }
 
 export type PayloadData = {
-    [key: string]: {}
+    [key: string]: any
 }
 export type PayloadError = {
     message: string
@@ -20,7 +20,7 @@ export type PayloadError = {
     severity?: "CRITICAL" | "ERROR" | "WARNING"
 }
 export type PayloadExtensions = {
-    [key: string]: {}
+    [key: string]: any
 }
 /**
  * The shape of a GraphQL response as dictated by the
