@@ -110,7 +110,7 @@ export type ReaderLocalArgument = {
     readonly kind: "LocalArgument"
     readonly name: string
     readonly type: string
-    readonly defaultValue: {}
+    readonly defaultValue: unknown
 }
 export type ReaderNode =
     | ReaderCondition
