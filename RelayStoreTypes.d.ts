@@ -95,13 +95,13 @@ export interface RecordProxy<T = { [key: string]: any }> {
     getLinkedRecords<H extends unknown = unknown, K extends keyof T = any>(
         name: K,
         args?: Variables
-    ): MaybeNull<T[K]> | ReadonlyArray<NullableRecord<H extends unknown ? Unarray<NonNullable<T[K]>> : H>>
+    ): MaybeNull<T[K]> | Array<NullableRecord<H extends unknown ? Unarray<NonNullable<T[K]>> : H>>
     getOrCreateLinkedRecord(name: string, typeName: string, args?: Variables): RecordProxy
     getType(): string
     getValue<K extends keyof T>(name: K, args?: Variables): T[K]
     setLinkedRecord<K extends keyof T>(record: RecordProxy<T[K]> | null, name: K, args?: Variables): RecordProxy
-    setLinkedRecords<H extends unknown = unknown, K extends keyof T = any>(
-        records: Array<RecordProxy<T[K]> | null> | undefined | null,
+    setLinkedRecords<K extends keyof T = any>(
+        records: Array<RecordProxy<Unarray<T[K]>> | null> | undefined | null,
         name: K,
         args?: Variables
     ): RecordProxy
