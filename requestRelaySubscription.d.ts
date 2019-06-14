@@ -6,7 +6,7 @@ import { IEnvironment, SelectorStoreUpdater } from "./RelayStoreTypes"
 export type GraphQLSubscriptionConfig<TSubscriptionPayload> = {
     configs?: Array<DeclarativeMutationConfig>
     subscription: GraphQLTaggedNode
-    variables: Variables
+    variables?: Variables
     onCompleted?: () => void | null
     onError?: (error: Error) => void | null
     onNext?: (response: TSubscriptionPayload | undefined | null) => void | null

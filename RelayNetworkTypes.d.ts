@@ -51,7 +51,7 @@ export type ExecuteFunction = (
     request: RequestParameters,
     variables: Variables,
     cacheConfig: CacheConfig,
-    uploadables: UploadableMap | undefined | null
+    uploadables?: UploadableMap | undefined | null
 ) => RelayObservable<GraphQLResponse>
 /**
  * A function that executes a GraphQL operation with request/response semantics.
@@ -64,7 +64,7 @@ export type FetchFunction = (
     request: RequestParameters,
     variables: Variables,
     cacheConfig: CacheConfig,
-    uploadables: UploadableMap | undefined | null
+    uploadables?: UploadableMap | undefined | null
 ) => ObservableFromValue<GraphQLResponse>
 /**
  * A function that executes a GraphQL subscription operation, returning one or

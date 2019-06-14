@@ -85,6 +85,14 @@ export type Scheduler = (a: () => void) => void
 type MaybeNull<T> = null extends T ? null : never
 type Unarray<T> = T extends Array<infer U> ? U : T
 type NullableRecord<T> = RecordProxy<NonNullable<T>> | MaybeNull<T>
+type DeepNullable<T> = {
+    [P in keyof T]: T[P] extends Array<infer U>
+      ? Array<DeepNullable<U>> | null
+      : T[P] extends ReadonlyArray<infer U>
+        ? ReadonlyArray<DeepNullable<U>> | null
+        : DeepNullable<T[P]> | null
+}
+
 export interface RecordProxy<T = { [key: string]: any }> {
     copyFieldsFrom(source: any): void
     getDataID(): DataID
@@ -141,7 +149,7 @@ export interface ReadOnlyRecordSourceProxy {
 export interface RecordSourceSelectorProxy<T = { [key: string]: any }> {
     create<K = any>(dataID: DataID, typeName: string): RecordProxy<K>
     delete(dataID: DataID): void
-    get<K = { [key: string]: any }>(dataID: DataID): RecordProxy<K> | null
+    get<K = { [key: string]: any }>(dataID: DataID): RecordProxy<DeepNullable<K>> | null
     getRoot(): RecordProxy
     getRootField<K extends keyof T>(fieldName: K): RecordProxy<NonNullable<T[K]>> | MaybeNull<T[K]>
     getPluralRootField(fieldName: string): RecordProxy[] | null
