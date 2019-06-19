@@ -149,7 +149,7 @@ export interface ReadOnlyRecordSourceProxy {
 export interface RecordSourceSelectorProxy<T = { [key: string]: any }> {
     create<K = any>(dataID: DataID, typeName: string): RecordProxy<K>
     delete(dataID: DataID): void
-    get<K = { [key: string]: any }>(dataID: DataID): RecordProxy<DeepNullable<K>> | null
+    get<K = { [key: string]: any }>(dataID: DataID): RecordProxy<K> | null
     getRoot(): RecordProxy
     getRootField<K extends keyof T>(fieldName: K): RecordProxy<NonNullable<T[K]>> | MaybeNull<T[K]>
     getPluralRootField(fieldName: string): RecordProxy[] | null
