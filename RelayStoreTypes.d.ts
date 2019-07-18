@@ -236,7 +236,7 @@ export type FragmentPointer = {
  */
 
 export type ModuleImportPointer = {
-    readonly __fragmentPropName: string | undefined | null
+    readonly __fragmentPropName?: string | undefined | null
     readonly __module_component: {}
     readonly $fragmentRefs: {}
 }

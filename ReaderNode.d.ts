@@ -3,8 +3,8 @@ import { ConcreteRequest } from "./RelayConcreteNode"
 export type ConnectionMetadata = {
     path: Array<string> | undefined | null
     direction: "forward" | "backward" | "bidirectional" | undefined | null
-    cursor: string | undefined | null
-    count: string | undefined | null
+    cursor?: string | undefined | null
+    count?: string | undefined | null
 }
 export type ReaderFragmentSpread = {
     readonly kind: "FragmentSpread"
@@ -78,7 +78,7 @@ export type ReaderField = ReaderScalarField | ReaderLinkedField
 export type ReaderRootArgument = {
     readonly kind: "RootArgument"
     readonly name: string
-    readonly type: string | undefined | null
+    readonly type?: string | undefined | null
 }
 export type ReaderInlineFragment = {
     readonly kind: "InlineFragment"
@@ -87,11 +87,11 @@ export type ReaderInlineFragment = {
 }
 export type ReaderLinkedField = {
     readonly kind: "LinkedField"
-    readonly alias: string | undefined | null
+    readonly alias?: string | undefined | null
     readonly name: string
-    readonly storageKey: string | undefined | null
+    readonly storageKey?: string | undefined | null
     readonly args: ReadonlyArray<ReaderArgument> | undefined | null
-    readonly concreteType: string | undefined | null
+    readonly concreteType?: string | undefined | null
     readonly plural: boolean
     readonly selections: ReadonlyArray<ReaderSelection>
 }
@@ -103,7 +103,7 @@ export type ReaderModuleImport = {
 export type ReaderLiteral = {
     readonly kind: "Literal"
     readonly name: string
-    readonly type: string | undefined | null
+    readonly type?: string | undefined | null
     readonly value: {}
 }
 export type ReaderLocalArgument = {
@@ -120,10 +120,10 @@ export type ReaderNode =
     | ReaderSplitOperation
 export type ReaderScalarField = {
     readonly kind: "ScalarField"
-    readonly alias: string | undefined | null
+    readonly alias?: string | undefined | null
     readonly name: string
     readonly args: ReadonlyArray<ReaderArgument> | undefined | null
-    readonly storageKey: string | undefined | null
+    readonly storageKey?: string | undefined | null
 }
 export type ReaderSelection =
     | ReaderCondition
@@ -145,7 +145,7 @@ export type ReaderSplitOperation = {
 export type ReaderVariable = {
     readonly kind: "Variable"
     readonly name: string
-    readonly type: string | undefined | null
+    readonly type?: string | undefined | null
     readonly variableName: string
 }
 export type ReaderSelectableNode = ReaderFragment | ReaderSplitOperation

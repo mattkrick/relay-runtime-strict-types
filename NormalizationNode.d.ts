@@ -7,7 +7,7 @@ export type NormalizationOperation = {
 export type NormalizationHandle = NormalizationScalarHandle | NormalizationLinkedHandle
 export type NormalizationLinkedHandle = {
     readonly kind: "LinkedHandle"
-    readonly alias: string | undefined | null
+    readonly alias?: string | undefined | null
     readonly name: string
     readonly args: ReadonlyArray<NormalizationArgument> | undefined | null
     readonly handle: string
@@ -16,7 +16,7 @@ export type NormalizationLinkedHandle = {
 }
 export type NormalizationScalarHandle = {
     readonly kind: "ScalarHandle"
-    readonly alias: string | undefined | null
+    readonly alias?: string | undefined | null
     readonly name: string
     readonly args: ReadonlyArray<NormalizationArgument> | undefined | null
     readonly handle: string
@@ -35,7 +35,7 @@ export type NormalizationField = NormalizationScalarField | NormalizationLinkedF
 export type NormalizationRootArgument = {
     readonly kind: "RootArgument"
     readonly name: string
-    readonly type: string | undefined | null
+    readonly type?: string | undefined | null
 }
 export type NormalizationInlineFragment = {
     readonly kind: "InlineFragment"
@@ -44,11 +44,11 @@ export type NormalizationInlineFragment = {
 }
 export type NormalizationLinkedField = {
     readonly kind: "LinkedField"
-    readonly alias: string | undefined | null
+    readonly alias?: string | undefined | null
     readonly name: string
-    readonly storageKey: string | undefined | null
+    readonly storageKey?: string | undefined | null
     readonly args: ReadonlyArray<NormalizationArgument> | undefined | null
-    readonly concreteType: string | undefined | null
+    readonly concreteType?: string | undefined | null
     readonly plural: boolean
     readonly selections: ReadonlyArray<NormalizationSelection>
 }
@@ -60,7 +60,7 @@ export type NormalizationModuleImport = {
 export type NormalizationLiteral = {
     readonly kind: "Literal"
     readonly name: string
-    readonly type: string | undefined | null
+    readonly type?: string | undefined | null
     readonly value: unknown
 }
 export type NormalizationLocalArgument = {
@@ -79,10 +79,10 @@ export type NormalizationNode =
     | NormalizationStream
 export type NormalizationScalarField = {
     readonly kind: "ScalarField"
-    readonly alias: string | undefined | null
+    readonly alias?: string | undefined | null
     readonly name: string
     readonly args: ReadonlyArray<NormalizationArgument> | undefined | null
-    readonly storageKey: string | undefined | null
+    readonly storageKey?: string | undefined | null
 }
 export type NormalizationSelection =
     | NormalizationCondition
@@ -128,7 +128,7 @@ export type NormalizationDefer = {
 export type NormalizationVariable = {
     readonly kind: "Variable"
     readonly name: string
-    readonly type: string | undefined | null
+    readonly type?: string | undefined | null
     readonly variableName: string
 }
 export type NormalizationSelectableNode =
