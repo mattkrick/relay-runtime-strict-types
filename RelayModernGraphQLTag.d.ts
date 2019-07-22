@@ -13,4 +13,4 @@ export function getRefetchableFragment(taggedNode: GraphQLTaggedNode): ReaderRef
 
 export function getRequest(taggedNode: GraphQLTaggedNode): ConcreteRequest
 
-export function graphql(strings: Array<string>): GraphQLTaggedNode
+export function graphql(strings: TemplateStringsArray): GraphQLTaggedNode
