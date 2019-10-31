@@ -14,12 +14,13 @@
             "../"
         ],
         "types": [],
-        "noEmit": false,
+        "noEmit": true,
         "jsx": "react",
         "experimentalDecorators": true,
         "forceConsistentCasingInFileNames": true
     },
     "files": [
-        "index.d.ts"
+        "index.d.ts",
+        "relay-runtime-tests.tsx"
     ]
 }
